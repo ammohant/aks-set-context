@@ -1,0 +1,59 @@
+{
+ "properties": {
+  "displayName": "Web Application should only be accessible over HTTPS [Custom] Changes2",
+  "policyType": "Custom",
+  "mode": "All",
+  "description": "Use of HTTPS ensures server/service authentication and protects data in transit from network layer eavesdropping attacks.",
+  "metadata": {
+   "category": "Security Center",
+   "createdBy": "d6324400-b96c-4eb9-b519-978adfbc6fc6",
+   "createdOn": "2020-08-21T13:37:45.3318133Z",
+   "updatedBy": null,
+   "updatedOn": null,
+   "gitHubPolicy": {
+    "policyHash": "37b0bfce54d9d0bcf0431037e84ca961a2d14658",
+    "repo": "ajinkya599/AzPac-action",
+    "commitSha": "a681401e2bb88e90c50c7c65a233625095c0ead3",
+    "runUrl": "https://github.com/ajinkya599/AzPac-action/actions/runs/218449313"
+   }
+  },
+  "parameters": {
+   "effect": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Effect",
+     "description": "Enable or disable the execution of the policy"
+    },
+    "allowedValues": [
+     "Audit",
+     "Disabled"
+    ],
+    "defaultValue": "Audit"
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Web/sites"
+     },
+     {
+      "field": "kind",
+      "like": "app*"
+     },
+     {
+      "field": "Microsoft.Web/sites/httpsOnly",
+      "equals": "false"
+     }
+    ]
+   },
+   "then": {
+    "effect": "[parameters('effect')]"
+   }
+  }
+ },
+ "id": "/subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/providers/Microsoft.Authorization/policyDefinitions/e4ed8da0-be44-47ba-b654-78994a11",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "e4ed8da0-be44-47ba-b654-78994a11"
+}

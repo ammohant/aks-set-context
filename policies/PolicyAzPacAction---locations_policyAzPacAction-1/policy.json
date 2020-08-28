@@ -1,0 +1,38 @@
+{
+ "properties": {
+  "displayName": "PolicyAzPacAction - locations",
+  "policyType": "Custom",
+  "mode": "All",
+  "metadata": {
+   "version": "0.0.0",
+   "createdBy": "d6324400-b96c-4eb9-b519-978adfbc6fc6",
+   "createdOn": "2020-08-18T13:35:10.3510983Z",
+   "updatedBy": "d6324400-b96c-4eb9-b519-978adfbc6fc6",
+   "updatedOn": "2020-08-24T08:50:35.3151276Z"
+  },
+  "parameters": {
+   "allowedLocations": {
+    "type": "Array",
+    "metadata": {
+     "displayName": "Allowed locations",
+     "description": "The list of allowed locations for resources.",
+     "strongType": "location"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "not": {
+     "field": "location",
+     "in": "[parameters('allowedLocations')]"
+    }
+   },
+   "then": {
+    "effect": "audit"
+   }
+  }
+ },
+ "id": "/subscriptions/c00d16c7-6c1f-4c03-9be1-6934a4c49682/providers/Microsoft.Authorization/policyDefinitions/policyAzPacAction-1",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "policyAzPacAction-1"
+}
